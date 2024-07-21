@@ -1,0 +1,172 @@
+
+@import 'ngx-toastr/toastr';
+
+
+.montserrat {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+h1{
+    font-size:32px;
+    line-height: 52px;
+    font-weight: 600;
+}
+
+h2{
+    font-size:26px;
+    line-height: 32px;
+    font-weight: 600;
+}
+
+h3{
+    font-size:20px;
+    line-height: 28px;
+    font-weight: 600;
+}
+h4{
+  font-size:14px;
+  line-height: 20px;
+  font-weight: 500;
+}
+
+
+.bgc-normal{
+    background-color: #DEAC80;
+} 
+
+.bgc-light{
+    background-color: #F7DCB9;
+} 
+
+.bgc-dark{
+    background-color: #914F1E;
+} 
+
+.bgc-footer{
+    background-color: #B5C18E;
+} 
+
+
+.invert-to-white{
+    filter: brightness(0) invert(1);
+    opacity:0.75;
+}
+.invert-to-white:hover{
+    opacity: 1;
+}
+
+.hover{
+  opacity: 0.75;
+}
+.hover:hover{
+  opacity: 1;
+}
+
+
+button {
+    padding: 0px 10px;
+    height: 40px;
+    border: none;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 8px;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 600;
+  }
+  
+  .primary-btn {
+    color: #1d1d1d;
+    background-color: #27ca78;
+  
+    &:hover {
+      background-image: linear-gradient(rgba(20,20,20,0.3), rgba(20,20,20,0.3)),
+        linear-gradient(#008944, #008944);
+      background-blend-mode: overlay;
+    }
+  
+    &:focus {
+      background-image: linear-gradient(rgba(20,20,20,0.4), rgba(20,20,20,0.4)),
+        linear-gradient(#008944, #008944);
+      background-blend-mode: overlay;
+    }
+  }
+  
+  
+  .secondary-btn {
+    background-color: #d6fbdf;
+    color: #1c7336;
+  
+    &:hover {
+      background-image: linear-gradient(rgba(20,20,20,0.1), rgba(20,20,20,0.1)),
+        linear-gradient(#008944, #008944);
+      background-blend-mode: overlay;
+    }
+  
+    &:focus {
+      background-image: linear-gradient(rgba(20,20,20,0.2), rgba(20,20,20,0.2)),
+        linear-gradient(#008944, #008944);
+      background-blend-mode: overlay;
+    }
+  }
+  
+  .outlined-btn {
+    border: 1px solid #a7a7a7;
+    background-color: transparent;
+    color: #f5f5f5;
+  
+    &:hover {
+      background-image: linear-gradient(rgba(20,20,20,0.1), rgba(20,20,20,0.1)),
+        linear-gradient(rgba(255,255,255,0.1),rgba(255,255,255,0.1));
+      background-blend-mode: overlay;
+    }
+  
+    &:focus {
+      background-image: linear-gradient(rgba(20,20,20,0.2), rgba(20,20,20,0.2)),
+        linear-gradient(rgba(255,255,255,0.4),rgba(255,255,255,0.4));
+      background-blend-mode: overlay;
+    }
+  }
+  
+  .ghost-btn {
+    background-color: transparent;
+    color: #282828;
+  
+    &:hover {
+      background-image: linear-gradient(rgba(20,20,20,0.1), rgba(20,20,20,0.1)),
+        linear-gradient(transparent,transparent);
+      background-blend-mode: overlay;
+    }
+  
+    &:focus {
+      background-image: linear-gradient(rgba(20,20,20,0.2), rgba(20,20,20,0.2)),
+        linear-gradient(transparent,transparent);
+      background-blend-mode: overlay;
+    }
+  }
+  
+  .destruct-btn {
+    background-color: #f33c2b;
+    color: #ffffff;
+  
+    &:hover {
+      background-image: linear-gradient(rgba(20,20,20,0.3), rgba(20,20,20,0.3)),
+        linear-gradient(#f33c2b,#f33c2b);
+      background-blend-mode: overlay;
+    }
+  
+    &:focus {
+      background-image: linear-gradient(rgba(20,20,20,0.4), rgba(20,20,20,0.4)),
+        linear-gradient(#f33c2b,#f33c2b);
+      background-blend-mode: overlay;
+    }
+  }
+  
+  /*#endregion Buttons*/
+  

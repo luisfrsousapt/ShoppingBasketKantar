@@ -24,6 +24,12 @@ namespace ShoppingBasketKantarAPI.Services
             return _mapper.Map<IEnumerable<ProductDTO>>(products);
         }
 
+        public async Task<IEnumerable<ProductDTO>> GetTrendingProducts()
+        {
+            var products = await _unitOfWork.ProductRepository.GetTrendingProducts();
+            return _mapper.Map<IEnumerable<ProductDTO>>(products);
+        }
+
         public async Task<ProductDTO> GetByIdAsync(Guid id)
         {
             var product = await _unitOfWork.ProductRepository.GetByIdAsync(id);

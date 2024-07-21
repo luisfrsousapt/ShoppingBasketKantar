@@ -1,0 +1,57 @@
+<div class="container pt-5">
+    <div class="row">
+        <div class="col-12">
+            <h1>Shopping Cart</h1>
+        </div>
+    </div>
+    <div class="row mb-5 p-2">
+        <div class="col-12 col-md-8  py-4 mb-3 me-md-5">
+          <div class="row g-0 p-0">
+            <div class="col-12 custom-border rounded-start g-0 m-0 d-flex mb-3 bgc-normal" *ngFor="let product of basketProducts">
+                <div class="row align-items-center">
+                    <div class="col-3">
+                        <img class="rounded-3" src="{{product.photoUrl}}" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="col-3 ">
+                        <span>{{product.name}}</span>
+                    </div>
+                    <div class="col-2 d-flex gap-3 justify-content-between bgc-normal">
+                        <div class="d-flex flex-column align-items-center">
+                            <span>Qty:</span>
+                            <span>{{product.quantity}}</span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <span>{{product.price * product.quantity | number:'1.2-2'}} €</span>
+                    </div>
+                    <div class="col-1">
+                        <img class="hover" src="assets/icons/trash-can.png" width="25" height="25" (click)="removeFromCart(product)"/>
+                    </div>
+                </div>
+               
+                
+            </div>
+            
+          </div>
+        </div>
+        <div class="col-12 col-md-3 py-4" *ngIf="basketProducts">
+            <div class="row p-2 pt-4 border border-dark">
+                <div class="col-12 d-flex justify-content-between align-items-center">
+                   <h3>Subtotal</h3>
+                   <span style="font-weight: 600;">{{getSubTotal() | number:'1.2-2'}} €</span>
+                </div>
+                <div class="col-12 d-flex justify-content-between align-items-center">
+                    <h4>Discounts</h4>
+                    <span></span>
+                 </div>
+                 <div class="col-12 d-flex justify-content-between pt-5 align-items-center">
+                    <h2>Total</h2>
+                    <span></span>
+                 </div>
+                 <div class="col-12 d-flex justify-content-between pt-5">
+                    <button class="primary-btn w-100">Continue to payment</button>
+                 </div>
+            </div>
+        </div>
+      </div>
+</div>

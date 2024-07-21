@@ -22,6 +22,12 @@ namespace ShoppingBasketKantarAPI.Controllers
             return Ok(await _productService.GetAllAsync());
         }
 
+        [HttpGet("trending")]
+        public async Task<ActionResult<IEnumerable<ProductDTO>>> GetTrendingProducts()
+        {
+            return Ok(await _productService.GetTrendingProducts());
+        }
+
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] ProductDTO productDTO)
         {

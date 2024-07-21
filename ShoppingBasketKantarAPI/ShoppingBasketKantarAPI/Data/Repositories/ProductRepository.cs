@@ -11,6 +11,11 @@ namespace ShoppingBasketKantarAPI.Data.Repositories
         {
             return await _dbContext.Products.Where(p => !p.Deleted).ToListAsync();
         }
+
+        public async Task<IEnumerable<Product>> GetTrendingProducts()
+        {
+            return await _dbContext.Products.Where(p => !p.Deleted).Take(3).ToListAsync();
+        }
         public async Task<Product> GetByIdAsync(Guid id)
         {
             return await _dbContext.Products.Where(p => !p.Deleted && p.ProductExternalId == id).FirstOrDefaultAsync();

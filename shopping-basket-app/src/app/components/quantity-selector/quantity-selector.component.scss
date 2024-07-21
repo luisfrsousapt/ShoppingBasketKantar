@@ -1,0 +1,21 @@
+.quantity-selector {
+    display: flex;
+    align-items: center;
+  }
+  
+  .quantity-selector button {
+    width: 30px;
+    height: 30px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    cursor: pointer;
+  }
+  
+  .quantity-selector input {
+    width: 40px;
+    text-align: center;
+    border: none;
+    background-color: transparent;
+    pointer-events: none;
+  }
+  

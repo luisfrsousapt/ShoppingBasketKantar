@@ -1,0 +1,10 @@
+.carousel-inner{
+    width:100%;
+    aspect-ratio: 16/5;
+}
+
+.carousel-item img{
+    object-fit:cover;
+    object-position: top;
+    aspect-ratio: 16/5;
+}
