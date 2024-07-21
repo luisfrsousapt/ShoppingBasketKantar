@@ -14,7 +14,7 @@ x64/
 [Bb]in/
 [Oo]bj/
 
-/.vs
+
 
 # MSTest test Results
 [Tt]est[Rr]esult*/
@@ -53,6 +53,7 @@ ipch/
 *.opensdf
 *.sdf
 *.cachefile
+.vs/
 
 # Visual Studio profiler
 *.psess
