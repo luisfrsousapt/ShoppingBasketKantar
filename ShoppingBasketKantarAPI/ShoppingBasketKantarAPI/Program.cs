@@ -34,6 +34,8 @@ builder.Services.AddScoped<IDiscountRepository,DiscountRepository>();
 //SERVICES
 builder.Services.AddScoped<IProductService,ProductService>();
 builder.Services.AddScoped<IDiscountService,DiscountService>();
+builder.Services.AddScoped<IBasketService,BasketService>();
+
 
 
 var app = builder.Build();

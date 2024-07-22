@@ -37,5 +37,12 @@ namespace ShoppingBasketKantarAPI.Data.Repositories
             _dbContext.Entry(discount).State = EntityState.Modified;
             await Task.CompletedTask;
         }
+
+        public async Task<List<Discount>> GetDiscountsByProductsList(List<int> productIds)
+        {
+           return await _dbContext.Discounts.Include(d => d.Rules)
+                .Where(d => d.ProductId.HasValue && productIds.Contains(d.ProductId.Value))
+                .ToListAsync();
+        }
     }
 }

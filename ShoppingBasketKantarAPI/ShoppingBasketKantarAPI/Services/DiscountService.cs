@@ -134,6 +134,11 @@ namespace ShoppingBasketKantarAPI.Services
             return _mapper.Map<DiscountDTO>(existingDiscount);
         }
 
+        public async Task<List<Discount>> GetDiscountsByProductsList(List<int> productIds)
+        {
+            return await _unitOfWork.DiscountRepository.GetDiscountsByProductsList(productIds);
+        }
+
         private async Task<List<DiscountRule>> MapDiscountRulesToEntity(List<DiscountRuleDTO>? rules)
         {
 
@@ -161,6 +166,7 @@ namespace ShoppingBasketKantarAPI.Services
         {
 
         }
+
 
     }
 }

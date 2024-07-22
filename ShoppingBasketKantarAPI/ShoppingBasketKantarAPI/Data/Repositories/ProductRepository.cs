@@ -30,5 +30,9 @@ namespace ShoppingBasketKantarAPI.Data.Repositories
             await Task.CompletedTask;
         }
 
+        public async Task<List<Product>> GetProductsListByIdAsync(List<Guid> ids)
+        {
+            return await _dbContext.Products.Where(p => ids.Contains(p.ProductExternalId)).ToListAsync();
+        }
     }
 }

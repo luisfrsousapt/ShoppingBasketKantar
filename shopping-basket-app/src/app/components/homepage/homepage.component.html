@@ -7,7 +7,7 @@
     </div>
     <div class="row mb-5">
         <div class="col-12 col-md-4 g-3" *ngFor="let product of trendingProducts">
-          <app-item-card [product]="product" (productChange)="saveProductInBasket($event)"></app-item-card>
+          <app-item-card [product]="product" (productChange)="saveProductInBasket(product)"></app-item-card>
         </div>
       </div>
 </div>

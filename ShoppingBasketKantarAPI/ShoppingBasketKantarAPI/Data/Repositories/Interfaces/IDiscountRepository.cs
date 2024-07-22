@@ -11,5 +11,7 @@ namespace ShoppingBasketKantarAPI.Data.Repositories.Interfaces
         Task AddAsync(Discount discount);
         Task UpdateAsync(Discount discount);
 
+        Task<List<Discount>> GetDiscountsByProductsList(List<int> productIds);
+
     }
 }

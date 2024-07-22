@@ -1,4 +1,5 @@
-﻿using ShoppingBasketKantarAPI.DTO;
+﻿using ShoppingBasketKantarAPI.Data.Entities;
+using ShoppingBasketKantarAPI.DTO;
 
 namespace ShoppingBasketKantarAPI.Services.Interfaces
 {
@@ -10,6 +11,8 @@ namespace ShoppingBasketKantarAPI.Services.Interfaces
         Task<DiscountDTO> CreateAsync(DiscountDTO discountDTO);
         Task<DiscountDTO> UpdateAsync(DiscountDTO discountDTO);
         Task<DiscountDTO> DeleteAsync(Guid id);
+
+        Task<List<Discount>> GetDiscountsByProductsList(List<int> productIds);
 
     }
 }

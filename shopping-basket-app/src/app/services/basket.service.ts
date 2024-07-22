@@ -1,15 +1,22 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../model/product.model';
 import { StorageService } from './storage.service';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Basket } from '../model/basket.model';
+import { environment } from 'src/environments/environment.development';
+import { BasketProduct } from '../model/basketproduct.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BasketService {
 
+  constructor(private storageService:StorageService, private http: HttpClient) { }
 
-
-  constructor(private storageService:StorageService) {  }
+  getBasket(products: BasketProduct[]): Observable<Basket> {
+    return this.http.post<Basket>(`${environment.api_basket_url}/`, products);
+  }
 
   saveInBasket(product: Product) {
     var basketProducts:Product[] = []
