@@ -12,7 +12,5 @@ namespace ShoppingBasketKantarAPI.Services.Interfaces
         Task<DiscountDTO> UpdateAsync(DiscountDTO discountDTO);
         Task<DiscountDTO> DeleteAsync(Guid id);
 
-        Task<List<Discount>> GetDiscountsByProductsList(List<int> productIds);
-
     }
 }

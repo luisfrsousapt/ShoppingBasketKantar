@@ -30,7 +30,8 @@ namespace ShoppingBasketKantarAPI.Mapper
                 .ForMember(dest => dest.ProductId, opt => opt.MapFrom(src => src.Product != null ? src.Product.ProductExternalId : (Guid?)null));
 
 
-            CreateMap<DiscountRule, DiscountRuleDTO>();
+            CreateMap<DiscountRule, DiscountRuleDTO>()
+                .ForMember(dest => dest.ProductExternalId, opt => opt.MapFrom(src => src.Product != null ? src.Product.ProductExternalId : (Guid?)null)); ;
             CreateMap<DiscountRuleDTO, DiscountRule>();
         }
     }

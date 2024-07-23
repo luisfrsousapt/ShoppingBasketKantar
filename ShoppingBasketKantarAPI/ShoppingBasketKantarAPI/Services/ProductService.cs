@@ -93,11 +93,6 @@ namespace ShoppingBasketKantarAPI.Services
             return _mapper.Map<ProductDTO>(existingProduct);
         }
 
-        public async Task<List<Product>> GetProductsListByIdAsync(List<Guid> ids)
-        {
-            return await _unitOfWork.ProductRepository.GetProductsListByIdAsync(ids);
-        }
-
 
         private async Task Validate(ProductDTO product)
         {

@@ -14,15 +14,11 @@ namespace ShoppingBasketKantarAPI.Services
 
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
-        private readonly IProductService _productService;
-        private readonly IDiscountService _discountService;
 
-        public BasketService(IUnitOfWork unitOfWork, IMapper mapper, IProductService productService, IDiscountService discountService)
+        public BasketService(IUnitOfWork unitOfWork, IMapper mapper)
         {
             _mapper = mapper;
             _unitOfWork = unitOfWork;
-            _productService = productService;
-            _discountService = discountService;
         }
 
 
@@ -34,9 +30,9 @@ namespace ShoppingBasketKantarAPI.Services
             }
 
             var productsExternalIds = productsInBasket.Select(p => p.ProductId).ToList();
-            var products = await GetProductsByIdsAsync(productsExternalIds);
+            var products = await _unitOfWork.ProductRepository.GetProductsListByIdAsync(productsExternalIds);
             var productIds = products.Select(p => p.ProductId).ToList();
-            var discounts = await GetDiscountsByProductIdsAsync(productIds);
+            var discounts = await _unitOfWork.DiscountRepository.GetDiscountsByProductsList(productIds);
 
             return CreateBasketDTO(products, discounts, productsInBasket);
         }
@@ -55,10 +51,13 @@ namespace ShoppingBasketKantarAPI.Services
                     .ToList();
                 var productDiscountDTOs = productDiscounts.Select(d => _mapper.Map<DiscountDTO>(d)).ToList();
 
+                
+
                 var productDiscount = new BasketProductDiscountDTO
                 {
                     Product = _mapper.Map<ProductDTO>(product),
-                    Discounts = productDiscountDTOs
+                    Discounts = productDiscountDTOs,
+                    ProductQuantity = productsInBasket.Where(p => p.ProductId == product.ProductExternalId).First().ProductQuantity
                 };
                 basket.ProductDiscounts.Add(productDiscount);
 
@@ -131,16 +130,6 @@ namespace ShoppingBasketKantarAPI.Services
                 }
             }
             return false;
-        }
-
-        private async Task<List<Product>> GetProductsByIdsAsync(List<Guid> productsExternalIds)
-        {
-            return await _productService.GetProductsListByIdAsync(productsExternalIds);
-        }
-
-        private async Task<List<Discount>> GetDiscountsByProductIdsAsync(List<int> productIds)
-        {
-            return await _discountService.GetDiscountsByProductsList(productIds);
         }
 
     }

@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using QuestPDF.Infrastructure;
 using ShoppingBasketKantarAPI.Data;
 using ShoppingBasketKantarAPI.Data.Repositories;
 using ShoppingBasketKantarAPI.Data.Repositories.Interfaces;
@@ -23,6 +24,9 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 //CORS
 builder.Services.AddCors();
 
+//PDF GENERATOR
+QuestPDF.Settings.License = LicenseType.Community;
+
 //AUTOMAPPER
 builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
 
@@ -35,6 +39,7 @@ builder.Services.AddScoped<IDiscountRepository,DiscountRepository>();
 builder.Services.AddScoped<IProductService,ProductService>();
 builder.Services.AddScoped<IDiscountService,DiscountService>();
 builder.Services.AddScoped<IBasketService,BasketService>();
+builder.Services.AddScoped<IReceiptService,ReceiptService>();
 
 
 
