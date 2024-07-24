@@ -12,8 +12,8 @@ using ShoppingBasketKantarAPI.Data;
 namespace ShoppingBasketKantarAPI.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240721100502_DiscountRuleColumnProductId")]
-    partial class DiscountRuleColumnProductId
+    [Migration("20240724130135_InitialCreateFinal")]
+    partial class InitialCreateFinal
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -93,6 +93,44 @@ namespace ShoppingBasketKantarAPI.Data.Migrations
                                     .HasPeriodEnd("PeriodEnd")
                                     .HasColumnName("PeriodEnd");
                             }));
+
+                    b.HasData(
+                        new
+                        {
+                            DiscountId = 1,
+                            CreateDate = new DateTime(2024, 7, 24, 13, 1, 34, 764, DateTimeKind.Utc).AddTicks(9820),
+                            CreateUserId = 1,
+                            Deleted = false,
+                            Description = "Welcome discount - 2€",
+                            DiscountCode = "WELCOME10",
+                            DiscountExternalId = new Guid("2c3bea54-0360-4ad6-916f-720e4f930ec2"),
+                            DiscountType = (short)2,
+                            Value = 2m
+                        },
+                        new
+                        {
+                            DiscountId = 2,
+                            CreateDate = new DateTime(2024, 7, 24, 13, 1, 34, 764, DateTimeKind.Utc).AddTicks(9824),
+                            CreateUserId = 1,
+                            Deleted = false,
+                            Description = "2 tins of soup and get a loaf of bread for half price",
+                            DiscountExternalId = new Guid("3ee409ce-bd98-4e7a-acf9-5ee4130edd44"),
+                            DiscountType = (short)1,
+                            ProductId = 3,
+                            Value = 0.5m
+                        },
+                        new
+                        {
+                            DiscountId = 3,
+                            CreateDate = new DateTime(2024, 7, 24, 13, 1, 34, 764, DateTimeKind.Utc).AddTicks(9826),
+                            CreateUserId = 1,
+                            Deleted = false,
+                            Description = " 10% discount off their normal price this week",
+                            DiscountExternalId = new Guid("1b6fab27-6308-4bc2-a32c-59bd303d82fe"),
+                            DiscountType = (short)1,
+                            ProductId = 1,
+                            Value = 0.1m
+                        });
                 });
 
             modelBuilder.Entity("ShoppingBasketKantarAPI.Data.Entities.DiscountRule", b =>
@@ -147,6 +185,16 @@ namespace ShoppingBasketKantarAPI.Data.Migrations
                                     .HasPeriodEnd("PeriodEnd")
                                     .HasColumnName("PeriodEnd");
                             }));
+
+                    b.HasData(
+                        new
+                        {
+                            DiscountRuleId = 1,
+                            DiscountId = 2,
+                            DiscountRuleType = (short)1,
+                            ProductId = 2,
+                            ProductQuantity = 2
+                        });
                 });
 
             modelBuilder.Entity("ShoppingBasketKantarAPI.Data.Entities.Product", b =>
@@ -212,6 +260,116 @@ namespace ShoppingBasketKantarAPI.Data.Migrations
                                     .HasPeriodEnd("PeriodEnd")
                                     .HasColumnName("PeriodEnd");
                             }));
+
+                    b.HasData(
+                        new
+                        {
+                            ProductId = 1,
+                            CreateDate = new DateTime(2024, 7, 24, 13, 1, 34, 764, DateTimeKind.Utc).AddTicks(9714),
+                            CreateUserId = 1,
+                            Deleted = false,
+                            Description = "Apple",
+                            Name = "Apple",
+                            PhotoUrl = "https://media.self.com/photos/5b6b0b0cbb7f036f7f5cbcfa/4:3/w_4116,h_3087,c_limit/apples.jpg",
+                            Price = 1m,
+                            ProductExternalId = new Guid("736c8512-8915-4ebe-8cf7-3f739b9f4eda")
+                        },
+                        new
+                        {
+                            ProductId = 2,
+                            CreateDate = new DateTime(2024, 7, 24, 13, 1, 34, 764, DateTimeKind.Utc).AddTicks(9720),
+                            CreateUserId = 1,
+                            Deleted = false,
+                            Description = "Soup",
+                            Name = "Soup",
+                            PhotoUrl = "https://www.inspiredtaste.net/wp-content/uploads/2022/01/Creamy-Chicken-Noodle-Soup-3-1200-1200x800.jpg",
+                            Price = 0.65m,
+                            ProductExternalId = new Guid("0b753c9b-05ed-4185-9331-f03c6cb7694c")
+                        },
+                        new
+                        {
+                            ProductId = 3,
+                            CreateDate = new DateTime(2024, 7, 24, 13, 1, 34, 764, DateTimeKind.Utc).AddTicks(9722),
+                            CreateUserId = 1,
+                            Deleted = false,
+                            Description = "Loaf of bread",
+                            Name = "Bread",
+                            PhotoUrl = "https://www.allrecipes.com/thmb/CjzJwg2pACUzGODdxJL1BJDRx9Y=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/6788-amish-white-bread-DDMFS-4x3-6faa1e552bdb4f6eabdd7791e59b3c84.jpg",
+                            Price = 0.8m,
+                            ProductExternalId = new Guid("f69e46cf-92e6-4e1f-a61d-9a68a0973238")
+                        },
+                        new
+                        {
+                            ProductId = 4,
+                            CreateDate = new DateTime(2024, 7, 24, 13, 1, 34, 764, DateTimeKind.Utc).AddTicks(9728),
+                            CreateUserId = 1,
+                            Deleted = false,
+                            Description = "Milk",
+                            Name = "Milk",
+                            PhotoUrl = "https://www.thefrozengarden.com/cdn/shop/articles/benefits-of-whole-milk-benefits-of-drinking-whole-milk-blog-frozen-garden_e991a019-eebb-455b-99b2-96041863f037.webp?v=1706546802",
+                            Price = 1.3m,
+                            ProductExternalId = new Guid("e4760ccf-58b8-4521-bd7c-1f1b0339dec9")
+                        },
+                        new
+                        {
+                            ProductId = 5,
+                            CreateDate = new DateTime(2024, 7, 24, 13, 1, 34, 764, DateTimeKind.Utc).AddTicks(9730),
+                            CreateUserId = 1,
+                            Deleted = false,
+                            Description = "Watermelon",
+                            Name = "Watermelon",
+                            PhotoUrl = "https://static.toiimg.com/thumb/msid-109165284,width-1280,height-720,resizemode-4/109165284.jpg",
+                            Price = 0.79m,
+                            ProductExternalId = new Guid("d9bbd08a-9861-4897-b3fb-0eb2aa471832")
+                        },
+                        new
+                        {
+                            ProductId = 6,
+                            CreateDate = new DateTime(2024, 7, 24, 13, 1, 34, 764, DateTimeKind.Utc).AddTicks(9736),
+                            CreateUserId = 1,
+                            Deleted = false,
+                            Description = "Ice cream",
+                            Name = "Ben & Jerry's Ice Cream",
+                            PhotoUrl = "https://i.ytimg.com/vi/PDHjQBQ-GDg/maxresdefault.jpg",
+                            Price = 4.39m,
+                            ProductExternalId = new Guid("811614d0-fb26-41fa-b306-66109e0f2bf6")
+                        },
+                        new
+                        {
+                            ProductId = 7,
+                            CreateDate = new DateTime(2024, 7, 24, 13, 1, 34, 764, DateTimeKind.Utc).AddTicks(9754),
+                            CreateUserId = 1,
+                            Deleted = false,
+                            Description = "Orange",
+                            Name = "Orange",
+                            PhotoUrl = "https://www.allrecipes.com/thmb/y_uvjwXWAuD6T0RxaS19jFvZyFU=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-1205638014-2000-d0fbf9170f2d43eeb046f56eec65319c.jpg",
+                            Price = 0.99m,
+                            ProductExternalId = new Guid("9ea3f102-3dcb-48c0-a84f-397fcb4a8490")
+                        },
+                        new
+                        {
+                            ProductId = 8,
+                            CreateDate = new DateTime(2024, 7, 24, 13, 1, 34, 764, DateTimeKind.Utc).AddTicks(9756),
+                            CreateUserId = 1,
+                            Deleted = false,
+                            Description = "Redbull can",
+                            Name = "Redbull",
+                            PhotoUrl = "https://assets.bwbx.io/images/users/iqjWHBFdfxIU/iIoVzYblObRg/v1/-1x-1.jpg",
+                            Price = 1.5m,
+                            ProductExternalId = new Guid("adff678d-1ffb-457c-8254-249f651732b8")
+                        },
+                        new
+                        {
+                            ProductId = 9,
+                            CreateDate = new DateTime(2024, 7, 24, 13, 1, 34, 764, DateTimeKind.Utc).AddTicks(9758),
+                            CreateUserId = 1,
+                            Deleted = false,
+                            Description = "Oreo",
+                            Name = "Oreo",
+                            PhotoUrl = "https://www.allrecipes.com/thmb/sjK0dcDQO7aQ4kQ1ixfcvZNK7mw=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/ar-oreo-adobe-2x1-3-41049067131d46cda449b40f5b3f6106.jpg",
+                            Price = 2.39m,
+                            ProductExternalId = new Guid("1455f131-1f9d-4988-b3f2-7549593afe30")
+                        });
                 });
 
             modelBuilder.Entity("ShoppingBasketKantarAPI.Data.Entities.Discount", b =>

@@ -25,6 +25,13 @@ export class QuantitySelectorComponent {
     }
   }
 
+  updateQuantity(){
+    if(this.quantity == 0){
+      this.quantity = 1
+    }
+    this.quantityChange.emit(this.quantity);
+  }
+
   increaseQuantity(): void {
     if (this.quantity < this.maxQ) {
       this.quantity++;

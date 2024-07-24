@@ -33,6 +33,17 @@ namespace ShoppingBasketKantarAPI.Controllers
             return Ok(await _discountService.CreateAsync(discountDTO));
         }
 
+        [HttpGet("discountcode/{code}")]
+        public async Task<IActionResult> PostDiscountCode([FromRoute] string code)
+        {
+            if (string.IsNullOrEmpty(code))
+            {
+                return BadRequest("You need to have a discount code in body");
+            }
+
+            return Ok(await _discountService.ValidateDiscountCode(code));
+        }
+
         [HttpPut]
         public async Task<IActionResult> Put([FromBody] DiscountDTO discountDTO)
         {

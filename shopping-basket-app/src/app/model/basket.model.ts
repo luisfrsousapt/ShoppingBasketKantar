@@ -9,7 +9,7 @@ export interface Basket{
 }
 
 export interface BasketProductDiscount{
-    product: Product
-    discount: Discount
-    ProductQuantity:number
+    product?: Product
+    discount?: Discount
+    ProductQuantity?:number
 }

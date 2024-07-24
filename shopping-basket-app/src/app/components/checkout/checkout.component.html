@@ -12,22 +12,23 @@
             </div>
             <div class="col-12 custom-border rounded-start g-0 m-0 d-flex mb-3 bgc-normal" *ngFor="let product of basketProducts">
                 <div class="row align-items-center">
-                    <div class="col-3">
-                        <img class="rounded-3" src="{{product.photoUrl}}" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="col-2 col-md-3">
+                        <img class="rounded-3" src="{{product.photoUrl}}" style="width: 100%; height: 100%; object-fit:cover;">
                     </div>
-                    <div class="col-3 ">
+                    <div class="col-2 col-md-3">
                         <span>{{product.name}}</span>
                     </div>
-                    <div class="col-2 d-flex gap-3 justify-content-between bgc-normal">
+                    <div class="col-4 col-md-2 d-flex gap-3 justify-content-between bgc-normal">
                         <div class="d-flex flex-column align-items-center">
                             <span>Qty:</span>
-                            <span>{{product.quantity}}</span>
+                            <!-- <span>{{product.quantity}}</span> -->
+                            <app-quantity-selector [(quantity)]="product.quantity" (quantityChange)="onChangeQuantity(product)"></app-quantity-selector>
                         </div>
                     </div>
-                    <div class="col-2">
+                    <div class="col-2 col-md-2">
                         <span>{{product.price * product.quantity | number:'1.2-2'}} €</span>
                     </div>
-                    <div class="col-1">
+                    <div class="col-1 col-md-1">
                         <img class="hover" src="assets/icons/trash-can.png" width="25" height="25" (click)="removeFromCart(product)"/>
                     </div>
                 </div>
@@ -51,7 +52,13 @@
                     <h2>Total</h2>
                     <span style="font-weight: 600;">{{basket.totalValue | number:'1.2-2'}} €</span>
                  </div>
-                 <div class="col-12 d-flex justify-content-between pt-5">
+                 <div class="col-12 pt-5">
+                    <div><label>Discount Code</label></div>
+                    <div class="input-group input-group-sm mb-3"> 
+                        <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" [(ngModel)]="discountCode">
+                        <button class="secondary-btn" (click)="applyDiscount()">Apply discount</button></div>
+                </div>
+                 <div class="col-12 d-flex justify-content-between pt-3">
                     <button class="primary-btn w-100" *ngIf="basket && basketProducts" (click)="checkoutBasket()">Continue to payment</button>
                  </div>
             </div>

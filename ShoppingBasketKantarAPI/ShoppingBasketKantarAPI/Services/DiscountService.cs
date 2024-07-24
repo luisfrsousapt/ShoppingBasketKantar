@@ -162,6 +162,10 @@ namespace ShoppingBasketKantarAPI.Services
 
         }
 
-
+        public async Task<DiscountDTO> ValidateDiscountCode(string discountCode)
+        {
+            var discount = await _unitOfWork.DiscountRepository.GetByDiscountCodeAsync(discountCode);
+            return _mapper.Map<DiscountDTO>(discount);
+        }
     }
 }

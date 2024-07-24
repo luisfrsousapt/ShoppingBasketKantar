@@ -1,5 +1,5 @@
 <div class="quantity-selector ">
     <button class="pb-1" (click)="decreaseQuantity()" [disabled]="quantity <= minQ">-</button>
-    <input  type="text" [value]="quantity" readonly>
+    <input  type="number" [(ngModel)]="quantity" (change)="updateQuantity()" min="1">
     <button  class="pb-1" (click)="increaseQuantity()" [disabled]="quantity >= maxQ">+</button>
   </div>

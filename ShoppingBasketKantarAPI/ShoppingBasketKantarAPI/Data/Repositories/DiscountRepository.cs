@@ -24,7 +24,7 @@ namespace ShoppingBasketKantarAPI.Data.Repositories
 
         public async Task<Discount> GetByDiscountCodeAsync(string discountCode)
         {
-            return await _dbContext.Discounts.Where(p => !p.Deleted && p.DiscountCode == discountCode).Include(p => p.Rules).FirstOrDefaultAsync();
+            return await _dbContext.Discounts.Where(p => !p.Deleted && p.DiscountCode.ToLower() == discountCode.ToLower()).Include(p => p.Rules).FirstOrDefaultAsync();
         }
 
         public async Task AddAsync(Discount discount)

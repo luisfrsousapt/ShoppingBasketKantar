@@ -12,5 +12,7 @@ namespace ShoppingBasketKantarAPI.Services.Interfaces
         Task<DiscountDTO> UpdateAsync(DiscountDTO discountDTO);
         Task<DiscountDTO> DeleteAsync(Guid id);
 
+        Task<DiscountDTO> ValidateDiscountCode(string discountCode);
+
     }
 }

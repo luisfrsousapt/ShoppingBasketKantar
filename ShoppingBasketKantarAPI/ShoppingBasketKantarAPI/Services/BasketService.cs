@@ -69,7 +69,7 @@ namespace ShoppingBasketKantarAPI.Services
             return basket;
         }
 
-        private decimal CalculateDiscountValue(Product product, List<Discount> productDiscounts, List<Product> products, decimal subTotal, List<BasketProductDTO> productQuantityBasket)
+        public decimal CalculateDiscountValue(Product product, List<Discount> productDiscounts, List<Product> products, decimal subTotal, List<BasketProductDTO> productQuantityBasket)
         {
             decimal totalDiscountValue = 0;
             var basketProduct = productQuantityBasket.FirstOrDefault(bp => bp.ProductId == product.ProductExternalId);

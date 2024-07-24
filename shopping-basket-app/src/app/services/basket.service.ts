@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../model/product.model';
 import { StorageService } from './storage.service';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Basket } from '../model/basket.model';
 import { environment } from 'src/environments/environment.development';
 import { BasketProduct } from '../model/basketproduct.model';
+import { Discount } from '../model/discount.model';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,10 @@ export class BasketService {
 
   getBasket(products: BasketProduct[]): Observable<Basket> {
     return this.http.post<Basket>(`${environment.api_basket_url}/`, products);
+  }
+
+  checkDiscountCode(code:string): Observable<Discount>{
+    return this.http.get<Discount>(`${environment.api_discount_url}/discountcode/${code}`);
   }
 
   saveInBasket(product: Product) {
@@ -55,6 +60,19 @@ export class BasketService {
       this.storageService.addItem('basket',listOfProducts);
     }
   }
+
+  changeProductQuantityCart(prod: Product) {
+    let listOfProducts = <Product[]>this.storageService.getItem('basket');
+    if (listOfProducts) {
+        listOfProducts = listOfProducts.map(p => {
+            if (p.productExternalId === prod.productExternalId) {
+                return { ...p, quantity: prod.quantity }; 
+            }
+            return p; 
+        });
+        this.storageService.addItem('basket', listOfProducts);
+    }
+}
 
 
   mergeProducts(products: Product[]): Product[] {
